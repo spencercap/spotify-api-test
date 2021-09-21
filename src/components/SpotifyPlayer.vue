@@ -28,6 +28,10 @@
 			</label>
 		</div>
 
+		<span>
+			{{ deviceId }}
+		</span>
+
 		<!-- <iframe src="https://open.spotify.com/embed/album/1DFixLWuPkv3KT3TnV35m3" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe> -->
 	</div>
 </template>
@@ -40,18 +44,29 @@ export default defineComponent({
 		return {
 			bewm: 'skeet',
 			spot: {
-				accessToken: 'BQAd6RByFPxA-1W2grLrxrCYO4dLBodMuQ-NOElf3H3-MSnc8EsVC_KuWp7ELiNEf2wrGAGq3Q1NcZMwMorzvM2LlI_XifuLFdoTWF3E-ji4OhMM2oH1E8qIA-OrqwMaL2IEEU7e2SA2AJxZ6A6rhoGJul9vCZ1fRT0',
+				accessToken: 'BQCpM5Zi9Smc6odqAoutbTPmBGAYs_SGIoVzznehuzGxvJoR9eAgEscvI0-rKa_oZmENZ4rHN7bMWMYDH62uCClsHL-phF-pHUy1Fu7hxVBDTsBJYQ-vL1_uRX4ytWhANAEI_5hsfNBwJAyfAihIAuUYQiIsLIG_zjM',
 				vol: 0.5
 			},
-			player: null as any
+			player: null as any,
+			deviceId: ''
 		}
 	},
 	mounted() {
 		console.log('SpotifyPlayer mounted');
 
-		setTimeout(() => {
+		// load spotify script (no need for index.html manipulation this way...)
+		const script = document.createElement('script');
+        script.src = 'https://sdk.scdn.co/spotify-player.js';
+        script.async = true;
+        document.body.appendChild(script);
+
+        window.onSpotifyWebPlaybackSDKReady = () => {
 			this.initPlayer();
-		}, 1000);
+		};
+
+		// setTimeout(() => {
+		// 	this.initPlayer();
+		// }, 1000);
 	},
 	methods: {
 		async initPlayer() {
@@ -66,6 +81,7 @@ export default defineComponent({
 				this.player = new window.Spotify.Player({
 				// const player = new window.Spotify.Player({
 					name: 'Spot API test player',
+					// id: 'test-id',
 					getOAuthToken: (callback: (token: string) => void) => {
 						// Run code to get a fresh access token
 						// as needed
@@ -80,7 +96,7 @@ export default defineComponent({
 						({ device_id }: { device_id: string }) => {
 							console.log('player object is ready');
 							console.log(device_id);
-							// this.deviceId = device_id;
+							this.deviceId = device_id;
 
 							// always start playing superfreak
 							// try some playback!
@@ -104,6 +120,7 @@ export default defineComponent({
 
 					const connect = await this.player.connect();
 					console.log('player connect', connect);
+					// this.connectId = connect;
 
 					// bus.on('spot-vol-set', async (v: number) => {
 					// 	// console.log('bus on: spot-vol-set', v);
