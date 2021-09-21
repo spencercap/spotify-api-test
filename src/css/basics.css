@@ -1,0 +1,259 @@
+:root {
+	--base-unit: 4px;
+	--color-accent: rgb(196, 233, 233);
+	--color-selected: hsl(36deg 100% 59%);
+}
+
+.fill-width {
+	width: 100% !important;
+}
+
+.fill-height {
+	height: 100% !important;
+}
+
+.d-block {
+	display: block !important;
+}
+
+.d-flex {
+	display: flex;
+}
+
+.flex-column {
+	flex-direction: column;
+}
+
+.flex-wrap {
+	flex-wrap: wrap;
+}
+
+.flex-grow-0 {
+	flex-grow: 0;
+}
+
+.flex-grow-1 {
+	flex-grow: 1;
+}
+
+.flex-shrink-0 {
+	flex-shrink: 0;
+}
+
+.align-center {
+	align-items: center;
+}
+
+.align-start {
+	align-items: flex-start;
+}
+
+.align-end {
+	align-items: flex-end;
+}
+
+.justify-center {
+	justify-content: center;
+}
+
+.justify-space-around {
+	justify-content: space-around;
+}
+
+.justify-space-between {
+	justify-content: space-between;
+}
+
+.justify-start {
+	justify-content: flex-start;
+}
+
+.br-0 {
+	border-radius: 0px !important;
+	overflow: hidden;
+}
+
+.br-2 {
+	border-radius: 2px;
+}
+
+.br-4 {
+	border-radius: 4px;
+}
+
+.mx-auto {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.mx-1 {
+	margin-left: calc(1 * var(--base-unit));
+	margin-right: calc(1 * var(--base-unit));
+}
+.mx-2 {
+	margin-left: calc(2 * var(--base-unit));
+	margin-right: calc(2 * var(--base-unit));
+}
+.mx-3 {
+	margin-left: calc(3 * var(--base-unit));
+	margin-right: calc(3 * var(--base-unit));
+}
+.mx-4 {
+	margin-left: calc(4 * var(--base-unit));
+	margin-right: calc(4 * var(--base-unit));
+}
+
+.my-0 {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+.my-1 {
+	margin-top: calc(1 * var(--base-unit));
+	margin-bottom: calc(1 * var(--base-unit));
+}
+.my-2 {
+	margin-top: calc(2 * var(--base-unit));
+	margin-bottom: calc(2 * var(--base-unit));
+}
+.my-4 {
+	margin-top: calc(4 * var(--base-unit));
+	margin-bottom: calc(4 * var(--base-unit));
+}
+
+.ma-1 {
+	margin: calc(1 * var(--base-unit));
+}
+.ma-2 {
+	margin: calc(2 * var(--base-unit));
+}
+.ma-4 {
+	margin: calc(4 * var(--base-unit));
+}
+
+.mt-1 {
+	margin-top: calc(1 * var(--base-unit));
+}
+.mt-2 {
+	margin-top: calc(2 * var(--base-unit));
+}
+.mt-4 {
+	margin-top: calc(4 * var(--base-unit));
+}
+
+.mb-1 {
+	margin-bottom: calc(1 * var(--base-unit));
+}
+.mb-2 {
+	margin-bottom: calc(2 * var(--base-unit));
+}
+.mb-4 {
+	margin-bottom: calc(4 * var(--base-unit));
+}
+
+.mr-1 {
+	margin-right: calc(1 * var(--base-unit));
+}
+.mr-2 {
+	margin-right: calc(2 * var(--base-unit));
+}
+.mr-4 {
+	margin-right: calc(4 * var(--base-unit));
+}
+
+.ml-1 {
+	margin-left: calc(1 * var(--base-unit));
+}
+.ml-2 {
+	margin-left: calc(2 * var(--base-unit));
+}
+.ml-4 {
+	margin-left: calc(4 * var(--base-unit));
+}
+
+/* padding */
+.pa-1 {
+	padding: calc(1 * var(--base-unit));
+}
+.pa-2 {
+	padding: calc(2 * var(--base-unit));
+}
+.pa-4 {
+	padding: calc(4 * var(--base-unit));
+}
+
+.px-1 {
+	padding-left: calc(1 * var(--base-unit));
+	padding-right: calc(1 * var(--base-unit));
+}
+.px-2 {
+	padding-left: calc(2 * var(--base-unit));
+	padding-right: calc(2 * var(--base-unit));
+}
+.px-4 {
+	padding-left: calc(4 * var(--base-unit));
+	padding-right: calc(4 * var(--base-unit));
+}
+
+.py-1 {
+	padding-top: calc(1 * var(--base-unit));
+	padding-bottom: calc(1 * var(--base-unit));
+}
+.py-2 {
+	padding-top: calc(2 * var(--base-unit));
+	padding-bottom: calc(2 * var(--base-unit));
+}
+.py-4 {
+	padding-top: calc(4 * var(--base-unit));
+	padding-bottom: calc(4 * var(--base-unit));
+}
+
+.pl-1 {
+	padding-left: calc(1 * var(--base-unit));
+}
+.pl-2 {
+	padding-left: calc(2 * var(--base-unit));
+}
+.pl-4 {
+	padding-left: calc(4 * var(--base-unit));
+}
+
+.pr-1 {
+	padding-right: calc(1 * var(--base-unit));
+}
+.pr-2 {
+	padding-right: calc(2 * var(--base-unit));
+}
+.pr-4 {
+	padding-right: calc(4 * var(--base-unit));
+}
+
+.pt-1 {
+	padding-top: calc(1 * var(--base-unit));
+}
+.pt-2 {
+	padding-top: calc(2 * var(--base-unit));
+}
+.pt-4 {
+	padding-top: calc(4 * var(--base-unit));
+}
+
+.pb-1 {
+	padding-bottom: calc(1 * var(--base-unit));
+}
+.pb-2 {
+	padding-bottom: calc(2 * var(--base-unit));
+}
+.pb-4 {
+	padding-bottom: calc(4 * var(--base-unit));
+}
+
+.pointer {
+	cursor: pointer;
+}
+
+.underline {
+	text-decoration: underline;
+}
+.underline-hover:hover {
+	text-decoration: underline;
+}
