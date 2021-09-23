@@ -1,17 +1,22 @@
 <template>
 	<div class="d-flex flex-column">
 		spotify player
-		<input v-model="spot.accessToken" type="text" placeholder="spotify access token">
 
-		<!-- <div>
+		<div class="d-flex flex-column">
+			<span>access token:</span>
+			<input v-model="spot.accessToken" type="text" placeholder="spotify access token">
+		</div>
 
-		</div> -->
-		<button @click="play">
-			play
-		</button>
-		<button @click="pause">
-			pause
-		</button>
+
+		<!-- <div class="py-2"> -->
+			<button @click="play">
+				play
+			</button>
+			<button @click="pause">
+				pause
+			</button>
+		<!-- </div> -->
+
 
 		<div style="width: fit-content;">
 			<input
@@ -28,9 +33,13 @@
 			</label>
 		</div>
 
-		<span>
-			{{ deviceId }}
-		</span>
+		<div class="d-flex flex-column">
+			spotify device id:
+			<span>
+				{{ deviceId }}
+			</span>
+		</div>
+
 
 		<!-- <iframe src="https://open.spotify.com/embed/album/1DFixLWuPkv3KT3TnV35m3" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe> -->
 	</div>
@@ -44,8 +53,8 @@ export default defineComponent({
 		return {
 			bewm: 'skeet',
 			spot: {
-				accessToken: 'BQCpM5Zi9Smc6odqAoutbTPmBGAYs_SGIoVzznehuzGxvJoR9eAgEscvI0-rKa_oZmENZ4rHN7bMWMYDH62uCClsHL-phF-pHUy1Fu7hxVBDTsBJYQ-vL1_uRX4ytWhANAEI_5hsfNBwJAyfAihIAuUYQiIsLIG_zjM',
-				vol: 0.5
+				accessToken: 'BQBEj4-cuUAT_ZlNaSTH6JeLh-12dp_8nUiR_WmibiPF2AFSgIAzKaIKS8CMOLw4pTZwYhFXLzIaD4jBEuToKg1ySvbCwQMCaohjXwnlEmBHY9xZNxV8ZAcHw3n1F-3u6YIT0Bb1N6LK6No9fNU0BAh6wyOpslaNwso5xpLHT_d2lQ6YPd9_mGL-_ZQsgLxvfnLEVVrus1iqNmbCjZFDwKIwrfZDBZzNTVz5pFAVcOyEMby0_qE1OWngePMZbN70GVHPGJSni5y8Ds7xO8-VUkRTB38',
+				vol: 0.8 // initial volume
 			},
 			player: null as any,
 			deviceId: ''
@@ -80,14 +89,15 @@ export default defineComponent({
 				const tok = this.spot.accessToken;
 				this.player = new window.Spotify.Player({
 				// const player = new window.Spotify.Player({
-					name: 'Spot API test player',
+					name: 'sptf plyr: ' + window.location.host,
 					// id: 'test-id',
 					getOAuthToken: (callback: (token: string) => void) => {
 						// Run code to get a fresh access token
 						// as needed
 						callback(tok);
 					},
-					volume: 0.1 // initial volume
+					// volume: 0.1 // initial volume
+					volume: this.spot.vol // initial volume
 				});
 
 				if (this.player) {
@@ -97,6 +107,17 @@ export default defineComponent({
 							console.log('player object is ready');
 							console.log(device_id);
 							this.deviceId = device_id;
+
+							// theres no event detected for remote volume set, but it works when on desktop, so reflect that in the UI
+							setInterval(async () => {
+								let vol = await this.player.getVolume();
+								// console.log('vol', vol);
+								vol = parseFloat(vol.toFixed(2))
+
+								if (vol !== this.spot.vol) {
+									this.spot.vol = vol;
+								}
+							}, 1000);
 
 							// always start playing superfreak
 							// try some playback!
@@ -172,5 +193,7 @@ export default defineComponent({
 </script>
 
 <style scoped>
-
+button {
+	height: 50px;
+}
 </style>

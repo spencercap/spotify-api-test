@@ -6,6 +6,8 @@ export default defineConfig({
 	plugins: [vue()],
 
 	server: {
+		hmr: false,
 		host: true,
+		https: true,
 	},
 });
