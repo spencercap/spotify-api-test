@@ -53,7 +53,9 @@ export default defineComponent({
 		return {
 			bewm: 'skeet',
 			spot: {
-				accessToken: 'BQBEj4-cuUAT_ZlNaSTH6JeLh-12dp_8nUiR_WmibiPF2AFSgIAzKaIKS8CMOLw4pTZwYhFXLzIaD4jBEuToKg1ySvbCwQMCaohjXwnlEmBHY9xZNxV8ZAcHw3n1F-3u6YIT0Bb1N6LK6No9fNU0BAh6wyOpslaNwso5xpLHT_d2lQ6YPd9_mGL-_ZQsgLxvfnLEVVrus1iqNmbCjZFDwKIwrfZDBZzNTVz5pFAVcOyEMby0_qE1OWngePMZbN70GVHPGJSni5y8Ds7xO8-VUkRTB38',
+				// get access token here:
+				// https://developer.spotify.com/documentation/web-playback-sdk/quick-start/#
+				accessToken: 'BQAsxIQtaJTeoM5txcfeeGneBbufwFluCSqR-C7kMeQD6hQ9YSz5xWmQKJdo44kLVNwjzp8UQ1xh7bv9gO1ox308kKgVHOiYWqaT3F0g9BnpI23OMMIQa_4XrsvMvAOZ9DFWkaRT9LaNiqtHiu9OpfAsam_trnskC-g',
 				vol: 0.8 // initial volume
 			},
 			player: null as any,
